@@ -1,0 +1,10 @@
+1-open local host (localhost:8000), after running the server
+2- click on "select item" of any product, you'll be redirected to a product view page
+3- click on "add to cart" and you'll be prompted to login, if you dont have an account you need to sign up
+4- You'll be redirected to the home page after signing up, so begin the ordering procees again as a registered user
+5- on the order summary page you can increase the quantity of the item you want to purchase
+
+
+
+The admin username is 'admin'
+password is 'testing123'

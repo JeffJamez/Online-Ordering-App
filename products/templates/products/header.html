@@ -1,0 +1,20 @@
+<html>
+{% load static %}
+<head>
+
+    <link href="{% static 'css/bootstrap-grid.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/app.min.css' %}" rel="stylesheet">
+    <link href="{% static 'fontawesome/css/fontawesome.css' %}" rel="stylesheet">
+
+</head>
+<body>
+{% include "products/includes/navbar.html" %}
+{% include "products/includes/messages.html" %}
+  {% block content %}
+
+  {% endblock %}
+{% include "products/includes/footer.html" %}
+</body>
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</html>

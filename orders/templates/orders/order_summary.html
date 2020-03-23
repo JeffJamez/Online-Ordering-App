@@ -1,0 +1,63 @@
+{% extends "products/header.html" %}
+{% block content %}
+
+    <div class="container">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th> </th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total price</th>
+              </tr>
+            </thead>
+            <tbody>
+            <!--  .all is used because its a many to many field-->
+            {% for order_item in object.items.all %}
+                  <tr>
+                      <th scope="row">{{ forloop.counter }}</th>
+                      <td>{{order_item.item.title}}</td>
+                      <td>{{order_item.item.price}}</td>
+                      <td>
+                          <a href="{% url 'orders:remove-single-item-from-cart' order_item.item.slug %}">
+                              <b class="btn btn-sm btn-success"> < </b></a>
+                            {{order_item.quantity}}
+                          <a href="{% url 'orders:add-to-cart' order_item.item.slug %}">
+                              <b class="btn btn-sm btn-success">  > </b></a>
+                      </td>
+                      <td>Ksh {{ order_item.get_total_item_price }}
+                         <a style="color:red;" href="{% url 'orders:remove-from-cart' order_item.item.slug %}">
+                             &nbsp;&nbsp;&nbsp;Remove
+                         </a>
+                      </td>
+                  </tr>
+                <!-- if the cart is empty-->
+            {% empty %}
+                <tr>
+                    <td colspan="5"><b>Your cart is empty</b></td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                          <a class="btn btn-success float-left" href="/">CONTINUE SHOPPING</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            {% if object.get_total %}
+                  <tr>
+                      <td></td><td></td>
+                      <td colspan="2"><b>The Grand Total is</b></td>
+                      <td><b>Ksh {{ object.get_total }}</b></td>
+                  </tr>
+                <tr>
+                    <td colspan="5">
+                          <a class="btn btn-success float-left" href="/">CONTINUE SHOPPING</a>
+                          <a class="btn btn-warning offset-6" href="{% url 'checkoutpage' %}">PROCEED TO CHECK OUT</a>
+                    </td>
+                </tr>
+            {% endif %}
+            </tbody>
+          </table>
+    </div>
+
+{% endblock content %}

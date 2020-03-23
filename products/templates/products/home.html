@@ -1,0 +1,130 @@
+{% extends "products/header.html" %}
+{% load static %}
+{% block content %}
+     <!--  Slider -->
+<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+
+
+<!--   Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#bs-carousel" data-slide-to="1"></li>
+    <li data-target="#bs-carousel" data-slide-to="2"></li>
+    <li data-target="#bs-carousel" data-slide-to="3"></li>
+  </ol>
+
+<!--   Wrapper for slides -->
+  <div class="carousel-inner carousel-overlay">
+    <div class="item slides active">
+      <div class="slide-1"></div>
+      <div class="hero">
+        <hgroup>
+            <h1>We are Here for you</h1>
+            <h3>Get start Here</h3>
+        </hgroup>
+         <a href="#" class="btn btn-hero btn-lg"  role="link" title="">All Product</a>
+      </div>
+    </div>
+    <div class="item slides">
+      <div class="slide-2"></div>
+      <div class="hero">
+        <hgroup>
+            <h1>We are Reliable</h1>
+            <h3>Available anytime</h3>
+        </hgroup>
+       <a href="#" class="btn btn-hero btn-lg"  role="link" title="">All Product</a>
+      </div>
+    </div>
+    <div class="item slides">
+      <div class="slide-3"></div>
+      <div class="hero">
+        <hgroup>
+            <h1>We are The Best</h1>
+            <h3>At what we do</h3>
+        </hgroup>
+      <a class="btn btn-hero btn-lg"  role="link" title="">All Product</a>
+      </div>
+    </div>
+
+      <div class="item slides">
+      <div class="slide-4"></div>
+      <div class="hero">
+        <hgroup>
+            <h1>We are amazing</h1>
+            <h3>Get start your next product</h3>
+        </hgroup>
+      <a href="#" class="btn btn-hero btn-lg"  role="link" title="">All Product</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+    <div class="main">
+      <section class="easy-section" id="featured-product">
+        <div class="container">
+          <h1 class="section-heading">Featured Product</h1>
+          <div class="row list-group featured-products-inner">
+              {% for product in object_list %}
+            <div class="item col-xs-12 col-sm-3 col-md-3 col-lg-3" data-id='1'>
+              <div class="thumbnail">
+                      <img src="{{ product.image.url }}" alt="" class="group list-group-image">
+                <div class="caption">
+                  <h3 class="group inner list-group-item-heading">{{ product.title }}</h3>
+                  <p class="group inner list-group-item-text">{{ product.description }}</p>
+                  <p>
+                   <div class="row pricebox">
+                      <div class="col-xs-12 col-md-5">
+                        <p class="lead">Ksh.{{ product.price }}</p>
+                     <a href="{{ product.get_absolute_url }}" class="btn btn-success"><i class="fa fa-shopping-cart"></i> Select Item</a>
+                      </div>
+                      </div>
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Featured product -->
+      <!-- Product category grid -->
+
+      <section class="easy-section" id="how-it-works">
+
+      <div class="container">
+      <h1 class="section-heading">How it works </h1>
+          <div class="row">
+            <div class="col-xs-12 col-md-4">
+            <div class="icon"><img src="{% static 'images/icons/gears.png' %}" class="img-responsive" alt="Image"></div>
+              <span>Click on the image of the item you want and you will be
+                  redirected to a product view page .</span>
+            </div>
+            <div class="col-xs-12 col-md-4">
+              <div class="icon"><img src="{% static 'images/icons/hourglass.png' %}" class="img-responsive" alt=""></div>
+              <span>Sign up if you aren't already, and enjoy the rest of your ordering process.</span>
+            </div>
+            <div class="col-xs-12 col-md-4">
+            <div class="icon"><img src="{% static 'images/icons/hand-shake.png' %}" class="img-responsive" alt="Image"></div>
+            <span>Complete all your details in the checking out page
+                and your products will be delivered to you.</span></div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section class="easy-section" id="contact">
+        <div class="container">
+        <h1 class="section-heading">Contact Us</h1>
+          <div class="row">
+
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+{% endblock content %}
